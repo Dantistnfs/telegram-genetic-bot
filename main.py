@@ -22,7 +22,7 @@ def ReverseTranscription(bot, update, args):
             bot.sendMessage(chat_id=update.message.chat_id, text="Error: NOT a DNA sequence")
             return 0
 
-    text_for_rt = "".join([seq_dict[base] for base in reversed(seq)])
+    text_for_rt = "".join([rt_dict[base] for base in reversed(seq)])
     bot.sendMessage(chat_id=update.message.chat_id, text=text_for_rt)
 
 
