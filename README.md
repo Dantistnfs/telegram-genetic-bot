@@ -1,6 +1,8 @@
 # Telegram Gene Bot
 Small bot that was created to help you in your gene-lab practice.
 
+[Add bot to your contacts](http://telegram.me/genetics_bot)
+
 ## Avalible functions
 
 For now he can:
