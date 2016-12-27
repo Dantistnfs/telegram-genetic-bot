@@ -4,9 +4,13 @@ import logging
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 
+
+import eutils
+ec = eutils.client.Client()
+
 updater = Updater(token=os.environ['TELEGRAM_BOT_API_KEY'])
 dispatcher = updater.dispatcher
-rt_dict = {'A':'T','T':'A','G':'C','C':'G'}
+rt_dict = {'A':'T','T':'A','G':'C','C':'G','N':'N','R':'Y','Y':'R'}
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO)
@@ -26,23 +30,28 @@ def help(bot, update):
 def ReverseTranscription(bot, update, args):
     seq = ' '.join(args).upper()
     for base in seq:
-        if base not in 'ATCG':
+        if base not in 'ATCGN':
             bot.sendMessage(chat_id=update.message.chat_id, text="Error: NOT a DNA sequence")
             return 0
 
     text_for_rt = "".join([rt_dict[base] for base in reversed(seq)])
     bot.sendMessage(chat_id=update.message.chat_id, text=text_for_rt)
 
+def GeneSearcher(bot, update, args):
+    gene = args.lower()
+    egs = ec.efetch(db='gene', term=gene)
+    bot.sendMessage(chat_id=update.message.chat_id, text=egs)
 
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 RT_handler = CommandHandler('RT', ReverseTranscription, pass_args=True)
+Gene_search_handler = CommandHandler('gene', GeneSearcher, pass_args=True)
 
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(RT_handler)
-
+dispatcher.add_handler(Gene_search_handler)
 
 updater.start_polling()
 
