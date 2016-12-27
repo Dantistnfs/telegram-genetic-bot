@@ -4,7 +4,7 @@ import logging
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 
-updater = Updater(token=os.environ['API_KEY'])
+updater = Updater(token=os.environ['TELEGRAM_BOT_API_KEY'])
 
 dispatcher = updater.dispatcher
 
