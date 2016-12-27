@@ -5,6 +5,7 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 
 updater = Updater(token=os.environ['TELEGRAM_BOT_API_KEY'])
+print(os.environ['TELEGRAM_BOT_API_KEY'])
 
 dispatcher = updater.dispatcher
 
