@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
     level=logging.INFO)
 
 bot_starting_message = "Hi i'm telegram bot and your personal assistant, more info with \"/help\" command"
-bot_help_meggase = "Help is still in development. But you can try to use some functions : \"/gene_id [argument]\" ; \"/RT [argument]\""
+bot_help_meggase = "Help is still in development. But you can try to use some functions : \"/entrezid [argument]\" ; \"/RT [argument]\""
 
 
 def start(bot, update):
@@ -37,10 +37,14 @@ def ReverseTranscription(bot, update, args):
     text_for_rt = "".join([rt_dict[base] for base in reversed(seq)])
     bot.sendMessage(chat_id=update.message.chat_id, text=text_for_rt)
 
-def GeneSearcherID(bot, update, args):
+def EntrezID(bot, update, args):
     gene = ' '.join(args)
     #egr = ec.esearch(db='gene',term=gene)
-    egs = ec.efetch(db='gene', id=gene)
+    try:
+        egs = ec.efetch(db='gene', id=gene)
+    except TypeError:
+        bot.sendMessage(chat_id=update.message.chat_id, text="There is no gene with such entrezid")
+        return 0
     #formated_answer = "Found %d results.\n" (% egr.count)
     #formated_answer += ""
     eg = egs.entrezgenes[0]
@@ -50,13 +54,13 @@ def GeneSearcherID(bot, update, args):
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 RT_handler = CommandHandler('RT', ReverseTranscription, pass_args=True)
-Gene_search_id_handler = CommandHandler('gene_id', GeneSearcherID, pass_args=True)
+Entrezid_handler = CommandHandler('entrezid', EntrezID, pass_args=True)
 
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(RT_handler)
-dispatcher.add_handler(Gene_search_id_handler)
+dispatcher.add_handler(Entrezid_handler)
 
 updater.start_polling()
 
