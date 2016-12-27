@@ -38,7 +38,7 @@ def ReverseTranscription(bot, update, args):
     bot.sendMessage(chat_id=update.message.chat_id, text=text_for_rt)
 
 def GeneSearcher(bot, update, args):
-    gene = args.lower()
+    gene = ' '.join(args).lower()
     egs = ec.efetch(db='gene', term=gene)
     bot.sendMessage(chat_id=update.message.chat_id, text=egs)
 
