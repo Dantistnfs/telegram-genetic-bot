@@ -42,13 +42,13 @@ def EntrezID(bot, update, args):
     #egr = ec.esearch(db='gene',term=gene)
     try:
         egs = ec.efetch(db='gene', id=gene)
+        eg = egs.entrezgenes[0]
+        answer = ' '.join([eg.hgnc, eg.maploc, eg.description, eg.type, eg.genus_species,'\n'])
     except TypeError:
         bot.sendMessage(chat_id=update.message.chat_id, text="There is no gene with such entrezid")
         return 0
     #formated_answer = "Found %d results.\n" (% egr.count)
     #formated_answer += ""
-    eg = egs.entrezgenes[0]
-    answer = ' '.join([eg.hgnc, eg.maploc, eg.description, eg.type, eg.genus_species,'\n'])
     bot.sendMessage(chat_id=update.message.chat_id, text=answer)
 
 start_handler = CommandHandler('start', start)
