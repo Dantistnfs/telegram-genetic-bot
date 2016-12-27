@@ -5,8 +5,12 @@ Small bot that was created to help you in your gene-lab practice.
 
 For now he can:
 
--Reverse Transcription, by ```/RT``` command
+- Reverse Transcription: ```/RT nucleotide sequence```
 
+## TODO function
+
+- Gene ENTREZID, GENENAME
+- Gene transcription factors
 
 ## Documentaion
 
