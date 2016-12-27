@@ -7,7 +7,9 @@ Small bot that was created to help you in your gene-lab practice.
 
 For now he can:
 
-- Reverse Transcription: ```/RT nucleotide sequence```
+- Reverse Transcription: ```/RT [nucleotide sequence]```
+- ENTREZID Seatch: ```/enterez_id [ENTREZID]```
+
 
 ## TODO function
 
