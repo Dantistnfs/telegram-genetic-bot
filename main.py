@@ -16,8 +16,9 @@ def start(bot, update):
     bot.sendMessage(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 
 def ReverseTranscription(bot, update, args):
+    seq = ' '.join(args).upper()
     for base in seq:
-        if base not in 'ATCGatcg':
+        if base not in 'ATCG':
             bot.sendMessage(chat_id=update.message.chat_id, text="Error: NOT a DNA sequence")
             return 0
 
