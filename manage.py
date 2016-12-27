@@ -1,10 +1,22 @@
 #!/usr/bin/env python
 import os
-import sys
+import logging
+from telegram.ext import Updater
+from telegram.ext import CommandHandler
 
-if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gettingstarted.settings")
+updater = Updater(token=os.environ['API_KEY'])
 
-    from django.core.management import execute_from_command_line
+dispatcher = updater.dispatcher
 
-    execute_from_command_line(sys.argv)
+
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO)
+
+
+def start(bot, update):
+    bot.sendMessage(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
+
+updater.start_polling()
