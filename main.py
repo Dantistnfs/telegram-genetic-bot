@@ -15,8 +15,8 @@ rt_dict = {'A':'T','T':'A','G':'C','C':'G','N':'N','R':'Y','Y':'R'}
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO)
 
-bot_starting_message = "Hi i'm telegram bot and your personal assistant, more info with \"\\help\" command"
-bot_help_meggase = "Help is still in development."
+bot_starting_message = "Hi i'm telegram bot and your personal assistant, more info with \"/help\" command"
+bot_help_meggase = "Help is still in development. But you can try to use some functions : \"/gene [argument]\" ; \"/RT [argument]\""
 
 
 def start(bot, update):
@@ -39,7 +39,7 @@ def ReverseTranscription(bot, update, args):
 
 def GeneSearcher(bot, update, args):
     gene = ' '.join(args).lower()
-    egs = ec.efetch(db='gene', term=gene)
+    egs = ec.esearch(db='gene',term=gene)
     bot.sendMessage(chat_id=update.message.chat_id, text=egs)
 
 start_handler = CommandHandler('start', start)

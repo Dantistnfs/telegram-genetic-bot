@@ -1,6 +1,5 @@
 # Telegram Gene Bot
-
-Small bot who created to help you in your gene-lab practice.
+Small bot that was created to help you in your gene-lab practice.
 
 ## Avalible functions
 
