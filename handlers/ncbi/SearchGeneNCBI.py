@@ -40,9 +40,8 @@ def ncbisearch(bot, update, user_data):
 
 def cancel(bot, update):
     user = update.message.from_user
-    update.message.reply_text('Bye! I hope we can talk again some day.',
+    update.message.reply_text('Sorry if i made something wrong( \n However, if you think it\'s bug, or you have idea how to make me better, write to my creator: @dantistnfs',
                               reply_markup=ReplyKeyboardRemove())
-
     return ConversationHandler.END
 
 
