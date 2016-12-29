@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import os
 import logging
-from telegram.ext import Updater
-from telegram.ext import CommandHandler
+from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
+                          ConversationHandler)
 
+from Bio import Entrez
+
+from handlers.ncbi.SearchGeneNCBI import * 
+
+Entrez.email = "s.v.zubenko@imbg.org.ua" 
 
 import eutils.client
 ec = eutils.client.Client()
@@ -14,13 +20,15 @@ rt_dict = {'A':'T','T':'A','G':'C','C':'G','N':'N','R':'Y','Y':'R'}
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-bot_starting_message = "Hi i'm telegram bot and your personal assistant, more info with \"/help\" command"
-bot_help_meggase = "Help is still in development. But you can try to use some functions : \"/entrezid [argument]\" ; \"/RT [argument]\""
+bot_starting_message = "Hi, %s. I'm telegram bot and your personal assistant, more info with \"/help\" command"
+bot_help_meggase = "Help is still in development. But you can try to use some functions: \n/entrezid [id];\n /RT [DNAseq]."
 
 
 def start(bot, update):
-    bot.sendMessage(chat_id=update.message.chat_id, text=bot_starting_message)
+    user = update.message.from_user
+    bot.sendMessage(chat_id=update.message.chat_id, text=(bot_starting_message % user.first_name))
 
 
 def help(bot, update):
@@ -53,16 +61,20 @@ def EntrezID(bot, update, args):
         return 0
     bot.sendMessage(chat_id=update.message.chat_id, text=answer)
 
+
+
+
+
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 RT_handler = CommandHandler('RT', ReverseTranscription, pass_args=True)
 Entrezid_handler = CommandHandler('entrezid', EntrezID, pass_args=True)
 
-
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(RT_handler)
 dispatcher.add_handler(Entrezid_handler)
+dispatcher.add_handler(conv_handler)
 
 updater.start_polling()
 
