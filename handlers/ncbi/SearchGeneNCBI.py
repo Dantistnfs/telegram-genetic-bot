@@ -7,7 +7,7 @@ ORGANISM = range(1)
 
 
 def chooseorganismtostart(bot, update, args, user_data):
-    reply_keyboard = [['human','Escherichia coli','Cypripedioideae', 'Other']]
+    reply_keyboard = [['Anyone'],['Human'],['Escherichia coli'],['Cypripedioideae']]
     user_data['gene'] = ' '.join(args)
     if user_data['gene'] == '':
         bot.sendMessage(chat_id=update.message.chat_id, text="Hey, you didn't specify gene to search for")
