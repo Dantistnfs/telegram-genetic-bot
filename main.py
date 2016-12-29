@@ -8,6 +8,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
 from Bio import Entrez
 
 from handlers.ncbi.SearchGeneNCBI import * 
+from handlers.sequence_ocr.sequence_ocr_handler import *
 
 Entrez.email = "s.v.zubenko@imbg.org.ua" 
 
@@ -78,6 +79,7 @@ dispatcher.add_handler(help_handler)
 dispatcher.add_handler(RT_handler)
 dispatcher.add_handler(Entrezid_handler)
 dispatcher.add_handler(conv_handler)
+dispatcher.add_handler(ocr_conv_handler)
 
 updater.start_polling()
 
