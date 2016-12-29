@@ -15,14 +15,14 @@ For now he can:
 - Search by GENENAME in NCBI database ```/ncbigene [GENE NAME] ```
 
 ## TODO function
-[x] Gene ENTREZID
-[x] Gene GENENAME
-[ ] Gene transcription factors
-[ ] Probably converters
-[ ] Sci-Hub search
-[ ] Sequence recognition from image?
-[ ] Impact factor search?
-[ ] Metabolic search?
+- [x] Gene ENTREZID
+- [x] Gene GENENAME
+- [ ] Gene transcription factors
+- [ ] Probably converters
+- [ ] Sci-Hub search
+- [ ] Sequence recognition from image?
+- [ ] Impact factor search?
+- [ ] Metabolic search?
 ## Documentaion
 
 Documentation will be written later
