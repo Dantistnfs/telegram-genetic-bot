@@ -15,15 +15,18 @@ import eutils.client
 ec = eutils.client.Client()
 
 updater = Updater(token=os.environ['TELEGRAM_BOT_API_KEY'])
-dispatcher = updater.dispatcher
+version = os.environ.get('RELEASE_ID')
+
 rt_dict = {'A':'T','T':'A','G':'C','C':'G','N':'N','R':'Y','Y':'R'}
+
+dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 bot_starting_message = "Hi, %s. I'm telegram bot and your personal assistant, more info with \"/help\" command"
-bot_help_meggase = "Help is still in development. But you can try to use some functions: \n/entrezid [id];\n /RT [DNAseq]."
+bot_help_meggase = "Help is still in development. But you can try to use some functions: \n/entrezid [id];\n /rt [DNAseq];\n /ncbigene [GENE]. \n Made by @dantistnfs, version: " + str(version)
 
 
 def start(bot, update):
@@ -67,7 +70,7 @@ def EntrezID(bot, update, args):
 
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
-RT_handler = CommandHandler('RT', ReverseTranscription, pass_args=True)
+RT_handler = CommandHandler('rt', ReverseTranscription, pass_args=True)
 Entrezid_handler = CommandHandler('entrezid', EntrezID, pass_args=True)
 
 dispatcher.add_handler(start_handler)
