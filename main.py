@@ -15,7 +15,7 @@ import eutils.client
 ec = eutils.client.Client()
 
 updater = Updater(token=os.environ['TELEGRAM_BOT_API_KEY'])
-version = os.environ.get('RELEASE_ID')
+version = os.environ.get('HEROKU_RELEASE_VERSION')
 
 rt_dict = {'A':'T','T':'A','G':'C','C':'G','N':'N','R':'Y','Y':'R'}
 
