@@ -1,7 +1,6 @@
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 from . import ocr
-import time
 PHOTO_OCR = range(1)
 
 
@@ -14,10 +13,7 @@ def photo_ocr(bot, update):
     user = update.message.from_user
     photo_file = bot.getFile(update.message.photo[-1].file_id)
     update.message.reply_text('Cool! Now, please wait. \n I need some time to read this stuff.')
-    start = time.time()
-    recognised_string = str(ocr.sequence_ocr_processing(photo_file.file_path)).replace("\n","").upper()
-    end = start - time.time()
-    update.message.reply_text('Operation tooked: %f seconds. \n Here your sequence: \n %s' % (end, recognised_string))
+    update.message.reply_text(ocr.sequence_ocr_processing(photo_file.file_path))
     return ConversationHandler.END
 
 
