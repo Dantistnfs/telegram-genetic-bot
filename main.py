@@ -4,7 +4,6 @@ import logging
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
                           ConversationHandler)
-
 from Bio import Entrez
 from handlers.ncbi.SearchGeneNCBI import * 
 from handlers.sequence_ocr.sequence_ocr_handler import *
