@@ -6,7 +6,6 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
                           ConversationHandler)
 
 from Bio import Entrez
-
 from handlers.ncbi.SearchGeneNCBI import * 
 from handlers.sequence_ocr.sequence_ocr_handler import *
 
