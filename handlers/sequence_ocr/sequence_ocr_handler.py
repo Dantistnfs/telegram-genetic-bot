@@ -13,7 +13,9 @@ def photo_ocr(bot, update):
     user = update.message.from_user
     photo_file = bot.getFile(update.message.photo[-1].file_id)
     update.message.reply_text('Cool! Now, please wait. \n I need some time to read this stuff.')
-    update.message.reply_text(ocr.sequence_ocr_processing(photo_file.file_path))
+    download, end, recognised_string = ocr.sequence_ocr_processing(photo_file.file_path)
+    update.message.reply_text('Download time: %f sec. \n Operation tooked: %f sec. \n Here your sequence:')
+    update.message.reply_text(recognised_string)
     return ConversationHandler.END
 
 

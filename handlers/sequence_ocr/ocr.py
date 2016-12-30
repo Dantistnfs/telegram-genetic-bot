@@ -7,7 +7,7 @@ from . import pytesseract
 import requests
 from io import BytesIO
 import time
-
+import mahotas
 
 def sequence_ocr_processing(image_url):
 	start = time.time()
@@ -15,5 +15,4 @@ def sequence_ocr_processing(image_url):
 	download = time.time() - start
 	recognised_string = pytesseract.image_to_string(image_downloaded, lang='eng').replace("\n","").upper()
 	end = time.time() - start - download
-	message = 'Download time: %f sec. \n Operation tooked: %f sec. \n Here your sequence: \n %s' % (download, end, recognised_string)
-	return message
+	return (download, end, recognised_string)
