@@ -16,7 +16,7 @@ def photo_ocr(bot, update):
     update.message.reply_text('Cool! Now, please wait. \n I need some time to read this stuff.')
     start = time.time()
     recognised_string = str(ocr.sequence_ocr_processing(photo_file.file_path)).replace("\n","").upper()
-    end = start - time.time()
+    end = time.time() - start
     update.message.reply_text('Operation tooked: %f seconds. \n Here your sequence: \n %s' % (end, recognised_string))
     return ConversationHandler.END
 
