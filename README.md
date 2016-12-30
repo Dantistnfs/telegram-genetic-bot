@@ -28,3 +28,7 @@ For now he can:
 ## Documentaion
 
 Documentation will be written later
+
+## REFERENCES
+
+1. Cock PA, Antao T, Chang JT, Bradman BA, Cox CJ, Dalke A, Friedberg I, Hamelryck T, Kauff F, Wilczynski B and de Hoon MJL (2009) Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics, 25, 1422-1423
