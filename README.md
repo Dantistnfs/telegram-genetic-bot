@@ -13,14 +13,15 @@ For now he can:
 - Reverse Transcription: ```/RT [nucleotide sequence]```
 - ENTREZID Search: ```/enterezid [ENTREZID]```
 - Search by GENENAME in NCBI database ```/ncbigene [GENE NAME] ```
+- Make recognition of text ```/ocr_sequnce```
 
 ## TODO function
 - [x] Gene ENTREZID
 - [x] Gene GENENAME
+- [x] Sequence recognition from image, partialy, still need upgrade to make this feature powerfull
 - [ ] Gene transcription factors
 - [ ] Probably converters
 - [ ] Sci-Hub search
-- [ ] Sequence recognition from image?
 - [ ] Impact factor search?
 - [ ] Metabolic search?
 

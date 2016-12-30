@@ -49,7 +49,7 @@ conv_handler = ConversationHandler(
     entry_points=[CommandHandler('ncbigene', chooseorganismtostart, pass_args=True, pass_user_data=True)],
 
     states={
-        ORGANISM: [RegexHandler('^(Cypripedioideae|Other|Escherichia coli|human)$', ncbisearch, pass_user_data=True)]
+        ORGANISM: [RegexHandler('^(Cypripedioideae|Anyone|Escherichia coli|Human)$', ncbisearch, pass_user_data=True)]
     },
 
     fallbacks=[CommandHandler('cancel', cancel)]
