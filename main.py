@@ -8,7 +8,7 @@ from Bio import Entrez
 from handlers.ncbi.SearchGeneNCBI import * 
 from handlers.sequence_ocr.sequence_ocr_handler import *
 
-#import cv2
+import cv3
 
 Entrez.email = "s.v.zubenko@imbg.org.ua" 
 
