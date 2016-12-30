@@ -8,7 +8,7 @@ from Bio import Entrez
 from handlers.ncbi.SearchGeneNCBI import * 
 from handlers.sequence_ocr.sequence_ocr_handler import *
 
-import cv2
+#import cv2
 
 Entrez.email = "s.v.zubenko@imbg.org.ua" 
 
@@ -27,7 +27,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 bot_starting_message = "Hi, %s. I'm telegram bot and your personal assistant, more info with \"/help\" command"
-bot_help_meggase = "Help is still in development. But you can try to use some functions: \n/entrezid [id];\n /rt [DNAseq];\n /ncbigene [GENE];\n /ocr_sequence. \n Made by @dantistnfs, version: " + str(version) + "\n Deployed: " + str(relase_time) + "\n OpenCV version:" + str(cv2.__version__) + "."
+bot_help_meggase = "Help is still in development. But you can try to use some functions: \n/entrezid [id];\n /rt [DNAseq];\n /ncbigene [GENE];\n /ocr_sequence. \n Made by @dantistnfs, version: " + str(version) + "\n Deployed: " + str(relase_time)# + "\n OpenCV version:" + str(cv2.__version__) + "."
 
 
 def start(bot, update):
