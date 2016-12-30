@@ -5,4 +5,3 @@ biopython==1.68
 pytesseract==0.1.6
 Pillow==3.1.2
 requests==2.9.1
-opencv-python==3.1.0.3
