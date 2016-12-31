@@ -30,9 +30,10 @@ def downscale_image(im, max_dim=2048):
 
 
 def sequence_ocr_processing(image_url):
-	numpy_picture = np.array(Image.open(BytesIO(requests.get(image_url).content)).convert('L')).astype(np.uint8)
+	image_downloaded = Image.open(BytesIO(requests.get(image_url).content))
+	image_converted = image_downloaded.convert('L')
+	numpy_picture = np.array(image_converted).astype(np.uint8)
 	start = time.time()
-	#threshold = mahotas.rc(numpy_picture)
 	image_processed = Image.fromarray(numpy_picture)
 	edge_dog = mahotas.dog(numpy_picture,sigma1=4,multiplier=1.5)
 	first_dilation = mahotas.dilate(edge_dog, np.ones((15,30)))
@@ -46,15 +47,12 @@ def sequence_ocr_processing(image_url):
 		box_coordinates = bboxes[index]
 		draw.rectangle([box_coordinates[2],box_coordinates[0],box_coordinates[3],box_coordinates[1]])
 		draw.text([(box_coordinates[2]+5),box_coordinates[0]], str(index), font = font)
-	image_processed.save('image.png')
-	download = 0
 	end = time.time() - start
-	recognised_string = "123"
-	return (download, end, recognised_string, image_processed)
+	return (nr_objects, end, image_processed, bboxes, image_downloaded)
 
 
-def ocr_process(image, box_coordinates):
+def ocr_process(image):
 	start = time.time()
-	recognised_string = pytesseract.image_to_string(image_for_recognition, lang='eng').replace("\n","").upper()
+	recognised_string = pytesseract.image_to_string(image, lang='eng').replace("\n","").replace(" ","").upper()
 	end = time.time() - start
-	return
+	return recognised_string, end
