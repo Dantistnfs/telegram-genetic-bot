@@ -1,7 +1,7 @@
 try:
 	import Image
 except ImportError:
-	from PIL import Image, ImageDraw
+	from PIL import Image, ImageDraw, ImageFont
 
 from . import pytesseract
 import requests
@@ -30,29 +30,31 @@ def downscale_image(im, max_dim=2048):
 
 
 def sequence_ocr_processing(image_url):
-	start = time.time()
 	numpy_picture = np.array(Image.open(BytesIO(requests.get(image_url).content)).convert('L')).astype(np.uint8)
+	start = time.time()
 	#threshold = mahotas.rc(numpy_picture)
-	image_for_recognition = Image.fromarray(numpy_picture)
+	image_processed = Image.fromarray(numpy_picture)
 	edge_dog = mahotas.dog(numpy_picture,sigma1=4,multiplier=1.5)
 	first_dilation = mahotas.dilate(edge_dog, np.ones((15,30)))
-	second_dilation = mahotas.dilate(first_dilation, np.ones((15,30)))
-	labeled, nr_objects = mahotas.label(second_dilation)
+	#second_dilation = mahotas.dilate(first_dilation, np.ones((15,30)))
+	labeled, nr_objects = mahotas.label(first_dilation)
 	bboxes = mahotas.labeled.bbox(labeled)
-	image = Image.fromarray(labeled.astype('uint8')*255)
-	draw = ImageDraw.Draw(image_for_recognition)
-	for box in bboxes:
-		draw.rectangle([box[2],box[0],box[3],box[1]])
-	image_for_recognition.save('image.png')
-	#imshow(labeled, interpolation='nearest')
-	#show()
-	"""
-	sobel_image = mahotas.dog(numpy_picture).astype(np.uint8)
-	Image.fromarray(sobel_image).save('image.png')
-	"""
-	download = time.time() - start
+	draw = ImageDraw.Draw(image_processed)
+	width, height = image_processed.size
+	font = ImageFont.truetype("arial.ttf", int(height/15))
+	for index in range(1,len(bboxes)):
+		box_coordinates = bboxes[index]
+		draw.rectangle([box_coordinates[2],box_coordinates[0],box_coordinates[3],box_coordinates[1]])
+		draw.text([(box_coordinates[2]+5),box_coordinates[0]], str(index), font = font)
+	image_processed.save('image.png')
+	download = 0
+	end = time.time() - start
+	recognised_string = "123"
+	return (download, end, recognised_string, image_processed)
+
+
+def ocr_process(image, box_coordinates):
+	start = time.time()
 	recognised_string = pytesseract.image_to_string(image_for_recognition, lang='eng').replace("\n","").upper()
-	end = time.time() - start - download
-	return (download, end, recognised_string, image_for_recognition)
-
-
+	end = time.time() - start
+	return
