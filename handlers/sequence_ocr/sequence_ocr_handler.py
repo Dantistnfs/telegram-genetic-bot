@@ -7,6 +7,7 @@ except ImportError:
     from PIL import Image
 import requests
 from io import BytesIO, StringIO
+
 DETECTING_PHOTO_BLOCKS, BLOCK_OCR = range(2)
 
 def sequence_ocr(bot, update):
