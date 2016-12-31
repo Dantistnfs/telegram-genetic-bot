@@ -6,3 +6,5 @@ pytesseract==0.1.6
 Pillow==3.1.2
 requests==2.9.1
 mahotas==1.4.3
+pypng==0.0.18
+matplotlib==1.5.3
