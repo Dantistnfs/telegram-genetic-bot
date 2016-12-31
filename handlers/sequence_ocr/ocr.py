@@ -1,7 +1,7 @@
 try:
 	import Image
 except ImportError:
-	from PIL import Image
+	from PIL import Image, ImageDraw
 
 from . import pytesseract
 import requests
@@ -34,8 +34,18 @@ def sequence_ocr_processing(image_url):
 	numpy_picture = np.array(Image.open(BytesIO(requests.get(image_url).content)).convert('L')).astype(np.uint8)
 	#threshold = mahotas.rc(numpy_picture)
 	image_for_recognition = Image.fromarray(numpy_picture)
-	edge_dog = mahotas.dog(numpy_picture)
-	Image.fromarray(mahotas.dilate(edge_dog, np.ones((10,10))).astype('uint8')*255).save('image.png')
+	edge_dog = mahotas.dog(numpy_picture,sigma1=4,multiplier=1.5)
+	first_dilation = mahotas.dilate(edge_dog, np.ones((15,30)))
+	second_dilation = mahotas.dilate(first_dilation, np.ones((15,30)))
+	labeled, nr_objects = mahotas.label(second_dilation)
+	bboxes = mahotas.labeled.bbox(labeled)
+	image = Image.fromarray(labeled.astype('uint8')*255)
+	draw = ImageDraw.Draw(image_for_recognition)
+	for box in bboxes:
+		draw.rectangle([box[2],box[0],box[3],box[1]])
+	image_for_recognition.save('image.png')
+	#imshow(labeled, interpolation='nearest')
+	#show()
 	"""
 	sobel_image = mahotas.dog(numpy_picture).astype(np.uint8)
 	Image.fromarray(sobel_image).save('image.png')
