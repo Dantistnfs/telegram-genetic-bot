@@ -9,10 +9,8 @@ from io import BytesIO, StringIO
 import time
 import mahotas
 import numpy as np
-import png
 import logging
 logger = logging.getLogger(__name__)
-from pylab import imshow, gray, show, subplot
 
 
 
