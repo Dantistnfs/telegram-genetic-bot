@@ -1,9 +1,9 @@
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler, RegexHandler)
 
-from scihub import SciHub
+from . import scihub
 
-sh = SciHub()
+sh = scihub.SciHub()
 
 DOWNLOAD = range(1)
 
@@ -36,7 +36,7 @@ def cancel(bot, update):
     return ConversationHandler.END
 
 
-conv_handler = ConversationHandler(
+sci_hub_conv_handler = ConversationHandler(
     entry_points=[CommandHandler('scihub', scihub_search, pass_args=True, pass_user_data=True)],
 
     states={
