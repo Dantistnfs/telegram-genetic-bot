@@ -11,7 +11,7 @@ from io import BytesIO, StringIO
 DETECTING_PHOTO_BLOCKS, BLOCK_OCR = range(2)
 
 def sequence_ocr(bot, update):
-    update.message.reply_text('To make recognition, i need photo of sequence. \n Please, send it to me.\n Practices for good recognition: \n - text should be horizontal \n - use flash; \n - crop photo to zone you need to recognize; \n - try to avoid blur on photos. ')       
+    update.message.reply_text('To make recognition, i need photo of sequence. \n Please, send it to me.\n Practices for good recognition: \n - text should be horizontal; \n - use flash; \n - try to avoid blur on photos. ')       
     return DETECTING_PHOTO_BLOCKS
 
 

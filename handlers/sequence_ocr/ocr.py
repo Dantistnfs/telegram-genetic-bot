@@ -51,6 +51,6 @@ def sequence_ocr_processing(image_url):
 
 def ocr_process(image):
 	start = time.time()
-	recognised_string = pytesseract.image_to_string(image, lang='eng').replace("\n","").replace(" ","").upper()
+	recognised_string = pytesseract.image_to_string(image, lang='eng').replace("\n","").replace(" ","").upper().replace("I\'","T")
 	end = time.time() - start
 	return recognised_string, end
