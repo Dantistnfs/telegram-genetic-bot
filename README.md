@@ -35,16 +35,14 @@ Documentation will be written later
 1. Cock PA, Antao T, Chang JT, Bradman BA, Cox CJ, Dalke A, Friedberg I, Hamelryck T, Kauff F, Wilczynski B and de Hoon MJL (2009) Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics, 25, 1422-1423
 2. Coelho, L.P. 2013. Mahotas: Open source software for scriptable computer vision. Journal of Open Research Software 1(1):e3, DOI: http://dx.doi.org/10.5334/jors.ac
 
-<<<<<<< HEAD
+
+## DISCLAIMER
+
+Photos that you send to ocr processing, stored on Heroku servers only on time when they are processed, but it may be stored on Telegram servers, thus I don't take responsibility for errors in ocr, information loss, hardware errors, etc.
+
+
 ## Thanks to:
 
 - [zaytoun]https://github.com/zaytoun for creating sci-hub python API.
 
 
-
-
-=======
-## DISCLAIMER
-
-Photos that you send to ocr processing, stored on Heroku servers only on time when they are processed, but it may be stored on Telegram servers, thus I don't take responsibility for errors in ocr, information loss, hardware errors, etc.
->>>>>>> master
