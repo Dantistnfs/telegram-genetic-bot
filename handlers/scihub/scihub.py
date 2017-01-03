@@ -54,7 +54,7 @@ class SciHub(object):
             
             if not papers:
                 print(res.content)
-                if 'CaptchaRedirect' in res.content:
+                if 'CaptchaRedirect'.encode("ascii") in res.content:
                     results['err'] = 'Failed to complete search with query %s (captcha)' % query
                 return results
             
