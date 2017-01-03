@@ -34,7 +34,7 @@ git clone https://github.com/Dantistnfs/telegram-genetic-bot/
 ```
 Install some dev packages (you might need more, depends on your currently installed libs)
 ```
- sudo apt-get install python3-dev libffi-dev tesseract-ocr
+sudo apt-get install python3-dev libffi-dev tesseract-ocr
 ```
 Create python virtual environment in the project root directory (don't forget about python3)
 ```
