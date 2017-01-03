@@ -26,9 +26,39 @@ For now he can:
 - [ ] Impact factor search?
 - [ ] Metabolic search?
 
-## Documentaion
+## Configure and run
 
-Documentation will be written later
+Clone the repository
+```
+git clone https://github.com/Dantistnfs/telegram-genetic-bot/
+```
+Install some dev packages (you might need more, depends on your currently installed libs)
+```
+ sudo apt-get install python3-dev libffi-dev tesseract-ocr
+```
+Create python virtual environment in the project root directory (don't forget about python3)
+```
+cd telegram-genetic-bot
+virtualenv -p python3 venv
+```
+Enter the virtual environment
+```
+source venv/bin/activate
+```
+Update the dependencies
+```
+pip install -r requirements.txt
+```
+Create .env file and add bot api key (get one from [BotFather](https://telegram.me/botfather)):
+```
+echo "TELEGRAM_BOT_API_KEY = YOUR_KEY_FROM_BOT_FATHER" > .env
+```
+Install heroky CLI from [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) and run locally, you will also need to register on heroku to enter credentials
+```
+heroku local
+```
+Now you are ready to test your bot with [Telegram clients](https://telegram.org/apps). Enjoy!
+
 
 ## REFERENCES
 
