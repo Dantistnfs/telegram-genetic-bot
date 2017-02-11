@@ -20,7 +20,8 @@ For now he can:
 - [x] Gene ENTREZID
 - [x] Gene GENENAME
 - [x] Sequence recognition from image
-- [ ] Gene transcription factors
+- [ ] Check if gene is transcription factor (http://fantom.gsc.riken.jp/5/sstar/Browse_Transcription_Factors_hg19, http://compbio.massey.ac.nz/apps/tcof/home/)
+- [ ] Find transcription factors for a specific gene
 - [ ] Probably converters
 - [ ] Sci-Hub search
 - [ ] Impact factor search?
