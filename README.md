@@ -18,6 +18,7 @@ For now he can:
 ## TODO function
 - [x] Gene ENTREZID
 - [x] Gene GENENAME
+- [ ] Rewrite ncbigene function to make it faster, now it uses 2 GET's from website.
 - [x] Sequence recognition from image, partialy, still need upgrade to make this feature powerfull
 - [ ] Gene transcription factors
 - [ ] Probably converters

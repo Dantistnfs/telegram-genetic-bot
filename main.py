@@ -5,11 +5,11 @@ from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
                           ConversationHandler)
 from Bio import Entrez
-from handlers.ncbi.SearchGeneNCBI import * 
+from handlers.ncbi.SearchGeneNCBI import *
 from handlers.sequence_ocr.sequence_ocr_handler import *
 
 
-Entrez.email = "s.v.zubenko@imbg.org.ua" 
+Entrez.email = "s.v.zubenko@imbg.org.ua"
 
 import eutils.client
 import mahotas
@@ -39,7 +39,7 @@ def help(bot, update):
     bot.sendMessage(chat_id=update.message.chat_id, text=bot_help_meggase)
 
 
-def ReverseTranscription(bot, update, args):
+def ReverseComplementary(bot, update, args):
     seq = ' '.join(args).upper()
     for base in seq:
         if base not in 'ATCGN':
@@ -71,7 +71,7 @@ def EntrezID(bot, update, args):
 
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
-RT_handler = CommandHandler('rt', ReverseTranscription, pass_args=True)
+RT_handler = CommandHandler('rt', ReverseComplementary, pass_args=True)
 Entrezid_handler = CommandHandler('entrezid', EntrezID, pass_args=True)
 
 dispatcher.add_handler(start_handler)
@@ -82,5 +82,3 @@ dispatcher.add_handler(conv_handler)
 dispatcher.add_handler(ocr_conv_handler)
 
 updater.start_polling()
-
-
