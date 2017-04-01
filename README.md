@@ -19,7 +19,8 @@ For now he can:
 ## TODO function
 - [x] Gene ENTREZID
 - [x] Gene GENENAME
-- [x] Sequence recognition from image
+- [ ] Rewrite ncbigene function to make it faster, now it uses 2 GET's from website.
+- [x] Sequence recognition from image, partialy, still need upgrade to make this feature powerfull
 - [ ] Check if gene is transcription factor (http://fantom.gsc.riken.jp/5/sstar/Browse_Transcription_Factors_hg19, http://compbio.massey.ac.nz/apps/tcof/home/)
 - [ ] Find transcription factors for a specific gene
 - [ ] Probably converters
