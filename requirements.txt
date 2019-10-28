@@ -2,7 +2,7 @@ biopython==1.68
 certifi==2016.9.26
 cycler==0.10.0
 eutils==0.2.2
-future==0.16.0
+future==0.18.1
 lxml==3.7.1
 mahotas==1.4.8
 matplotlib==1.5.3
