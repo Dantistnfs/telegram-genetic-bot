@@ -1,5 +1,5 @@
 biopython==1.74
-certifi==2016.9.26
+certifi==2019.9.11
 cycler==0.10.0
 eutils==0.2.2
 future==0.18.1
