@@ -7,7 +7,7 @@ lxml==3.7.1
 mahotas==1.4.8
 matplotlib==1.5.3
 numpy==1.11.3
-Pillow==6.2.0
+Pillow==6.2.1
 pyparsing==2.1.10
 pypng==0.0.18
 pytesseract==0.3.0
