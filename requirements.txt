@@ -3,7 +3,7 @@ certifi==2019.9.11
 cycler==0.10.0
 eutils==0.2.2
 future==0.18.1
-lxml==3.7.1
+lxml==4.4.1
 mahotas==1.4.8
 matplotlib==3.1.1
 numpy==1.17.3
