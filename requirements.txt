@@ -6,7 +6,7 @@ future==0.18.2
 lxml==4.4.1
 mahotas==1.4.8
 matplotlib==3.1.1
-numpy==1.17.3
+numpy==1.18.4
 Pillow==6.2.1
 pyparsing==2.4.4
 pypng==0.0.20
