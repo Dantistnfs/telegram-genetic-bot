@@ -1,4 +1,4 @@
-biopython==1.74
+biopython==1.77
 certifi==2019.9.11
 cycler==0.10.0
 eutils==0.5.2
