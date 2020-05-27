@@ -20,7 +20,7 @@ urllib3==1.25.9
 beautifulsoup4==4.8.1
 cffi==1.13.2
 cryptography==2.8
-enum34==1.1.6
+enum34==1.1.10
 idna==2.8
 ipaddress==1.0.23
 ndg-httpsclient==0.5.1
