@@ -1,7 +1,7 @@
 biopython==1.77
 certifi==2020.4.5.1
 cycler==0.10.0
-eutils==0.5.2
+eutils==0.6.0
 future==0.18.2
 lxml==4.5.1
 mahotas==1.4.9
