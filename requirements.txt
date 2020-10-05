@@ -18,7 +18,7 @@ pytz==2019.3
 requests==2.24.0
 six==1.13.0
 urllib3==1.25.9
-beautifulsoup4==4.8.1
+beautifulsoup4==4.9.3
 cffi==1.13.2
 cryptography==2.8
 enum34==1.1.6
