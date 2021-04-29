@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "03:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: pillow
+    versions:
+    - 8.1.0
+    - 8.1.1
+    - 8.1.2
+  - dependency-name: python-telegram-bot
+    versions:
+    - "13.1"
+    - "13.2"
+    - "13.3"
+  - dependency-name: lxml
+    versions:
+    - 4.6.2
+  - dependency-name: pytz
+    versions:
+    - "2020.5"
+  - dependency-name: cffi
+    versions:
+    - 1.14.4
